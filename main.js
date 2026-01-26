@@ -4,7 +4,20 @@ import {htmlQuiz} from './quizData.js'
 
 // dom elem
 const optionBtns = document.querySelectorAll('.option');
-const headerElem = document.querySelector('.quiz-title')
+const headerElem = document.querySelector('.quiz-title');
+
+const questionElem = document.querySelector('.heading')
+const descElem = document.querySelector('.desc')
+
+
+// current question
+let currentQuestionIndex = 0;
+
+// score
+let score = 0;
+
+
+
 
 // add event listener to all options btn
 optionBtns.forEach((btn) => {
@@ -15,7 +28,7 @@ optionBtns.forEach((btn) => {
 
         //load quiz
         if(btn.id === 'html'){
-            loadQuiz();
+            loadQuiz(htmlQuiz);
         }
     })
 })
@@ -23,6 +36,8 @@ optionBtns.forEach((btn) => {
 
 
 
-function loadQuiz(){
-    //get diff quiz array and then populate dom
+function loadQuiz(quizData){
+    // show question and desc
+    questionElem.innerHTML = quizData[currentQuestionIndex].question;
+    descElem.innerHTML = `Question ${currentQuestionIndex + 1} out of ${quizData.length}`;
 }
