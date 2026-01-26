@@ -36,7 +36,6 @@ nextBtn.addEventListener("click", function () {
 
     // check for last question
     if (currentQuestionIndex === selectedCatagory.length) {
-      console.log(headerElem);
       // show score
       optionSection.innerHTML = `   
         <div class="scoreElem">
@@ -45,6 +44,13 @@ nextBtn.addEventListener("click", function () {
             <p>out of ${selectedCatagory.length}</p>
         </div>
         `;
+
+        // rename next button
+        nextBtn.innerText = 'Play again';
+
+        // change heding text
+        questionElem.innerHTML = `Quiz completed <b>You scored...</b>`;
+        descElem.innerHTML = '';
 
       return;
     }
