@@ -114,6 +114,24 @@ body{
     letter-spacing: 1px;
 }
 
+.ansbtn.correct{
+    border: 1px solid lightgreen;
+    color: lightgreen;
+}
+.ansbtn.correct:hover{
+    border-color:lightgreen;
+}
+
+
+.ansbtn.incorrect{
+    border: 1px solid crimson;
+    color: crimson;
+}
+.ansbtn.incorrect:hover{
+    border-color:crimson;
+}
+
+
 .right-section .submit{
     display: none;
     justify-content: center;

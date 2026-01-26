@@ -84,9 +84,11 @@ function checkAnswer(answer, correctAns, elem){
         score++;
         // show success indicator
         console.log('right ans')
+        elem.classList.add('correct')
     }else{
         // show fail indicator and cursor not allowd
         console.log('wrong ans')
+        elem.classList.add('incorrect')
     }
 
 }
