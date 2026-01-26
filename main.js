@@ -17,7 +17,7 @@ let currentQuestionIndex = 0;
 
 // current catagory
 let selectedCatagory = [];
-let currentCatagory = '';
+let currentCatagory = "";
 
 // check for selection
 let selectedAnswr = false;
@@ -32,13 +32,21 @@ nextBtn.addEventListener("click", function () {
     currentQuestionIndex++;
     selectedAnswr = false;
 
-    console.log(currentQuestionIndex)
+    console.log(currentQuestionIndex);
 
     // check for last question
-    if(currentQuestionIndex === selectedCatagory.length){
-        // show score
-        optionSection.innerHTML = 'score is 10'
-        return;
+    if (currentQuestionIndex === selectedCatagory.length) {
+      console.log(headerElem);
+      // show score
+      optionSection.innerHTML = `   
+        <div class="scoreElem">
+            <div class="heading">${headerElem.innerHTML}</div>
+            <h1 class="score">${score}</h1>
+            <p>out of ${selectedCatagory.length}</p>
+        </div>
+        `;
+
+      return;
     }
 
     if (currentCatagory === "html") {
@@ -56,11 +64,9 @@ nextBtn.addEventListener("click", function () {
     if (currentCatagory === "accessibility") {
       loadQuiz(accessibilityQuiz);
     }
-  }else{
+  } else {
     return;
-  };
-
-
+  }
 });
 
 // add event listener to all options btn
@@ -77,7 +83,7 @@ optionBtns.forEach((btn) => {
 
     //load quiz
     if (btn.id === "html") {
-        loadQuiz(htmlQuiz);
+      loadQuiz(htmlQuiz);
     }
 
     if (btn.id === "css") {
@@ -91,15 +97,11 @@ optionBtns.forEach((btn) => {
     if (btn.id === "accessibility") {
       loadQuiz(accessibilityQuiz);
     }
-
-
   });
 });
 
-
-
 function loadQuiz(quizData) {
-    selectedCatagory = [...quizData]
+  selectedCatagory = [...quizData];
   // show question and desc
   questionElem.innerHTML = quizData[currentQuestionIndex].question;
   descElem.innerHTML = `Question ${currentQuestionIndex + 1} out of ${quizData.length}`;
