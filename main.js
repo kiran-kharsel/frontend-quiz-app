@@ -89,6 +89,12 @@ function checkAnswer(answer, correctAns, elem){
         // show fail indicator and cursor not allowd
         console.log('wrong ans')
         elem.classList.add('incorrect')
+
+        // cursor not allowed for multi selection
+        optionSection.querySelectorAll('.ansbtn').forEach((btn) => {
+            console.log(btn)
+            btn.style.cursor = 'not-allowed'
+        })
     }
 
 }
