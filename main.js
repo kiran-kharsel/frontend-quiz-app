@@ -1,5 +1,5 @@
 // import data from quizdata
-import {htmlQuiz} from './quizData.js'
+import {htmlQuiz, cssQuiz, jsQuiz, accessibilityQuiz} from './quizData.js'
 
 
 // dom elem
@@ -32,6 +32,18 @@ optionBtns.forEach((btn) => {
         if(btn.id === 'html'){
             loadQuiz(htmlQuiz);
         }
+
+        if(btn.id === 'css'){
+            loadQuiz(cssQuiz);
+        }
+
+        if(btn.id === 'javascript'){
+            loadQuiz(jsQuiz);
+        }
+
+        if(btn.id === 'accessibility'){
+            loadQuiz(accessibilityQuiz);
+        }
     })
 })
 
@@ -52,6 +64,24 @@ function loadQuiz(quizData){
         ansBtn.innerText = ans;
         rightSection.appendChild(ansBtn);
 
-        ansBtn.addEventListener
+        ansBtn.addEventListener('click', function(){
+            // check answer
+            checkAnswer(ans, quizData[currentQuestionIndex].correctAnswer, ansBtn)
+        })
     })
+}
+
+
+// check answer
+function checkAnswer(answer, correctAns, elem){
+    // check if selected ans is correct
+    if(answer === correctAns){
+        score++;
+        // show success indicator
+        console.log('right ans')
+    }else{
+        // show fail indicator and cursor not allowd
+        console.log('wrong ans')
+    }
+
 }
