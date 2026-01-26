@@ -132,7 +132,7 @@ body{
 }
 
 
-.right-section .submit{
+.right-section .next{
     display: none;
     justify-content: center;
     text-transform: capitalize;
@@ -143,6 +143,6 @@ body{
     letter-spacing: 0.5px;
 }
 
-.right-section .submit.active{
+.right-section .next.active{
     display: flex;
 }
