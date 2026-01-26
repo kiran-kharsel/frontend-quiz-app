@@ -11,7 +11,7 @@ const descElem = document.querySelector('.desc')
 
 const rightSection = document.querySelector('.right-section')
 const optionSection = rightSection.querySelector('.option-section')
-const submitBtn = rightSection.querySelector('.submit')
+const nextBtn = rightSection.querySelector('.next')
 
 
 // current question
@@ -30,8 +30,8 @@ optionBtns.forEach((btn) => {
         headerElem.innerHTML = btn.innerHTML;
 
         //show submit button
-        submitBtn.classList.add('active')
-        console.log(submitBtn)
+        nextBtn.classList.add('active')
+
 
         //load quiz
         if(btn.id === 'html'){
