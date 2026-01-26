@@ -18,28 +18,39 @@ let currentQuestionIndex = 0;
 // current catagory
 let currentCatagory = "";
 
+// check for selection
+let selectedAnswr = false;
+
 // score
 let score = 0;
 
 // next question load
 nextBtn.addEventListener("click", function () {
-  currentQuestionIndex++;
+  // check if user select any option
+  if (selectedAnswr) {
+    currentQuestionIndex++;
+    selectedAnswr = false;
 
-  if (currentCatagory === "html") {
-    loadQuiz(htmlQuiz);
-  }
+    if (currentCatagory === "html") {
+      loadQuiz(htmlQuiz);
+    }
 
-  if (currentCatagory === "css") {
-    loadQuiz(cssQuiz);
-  }
+    if (currentCatagory === "css") {
+      loadQuiz(cssQuiz);
+    }
 
-  if (currentCatagory === "javascript") {
-    loadQuiz(jsQuiz);
-  }
+    if (currentCatagory === "javascript") {
+      loadQuiz(jsQuiz);
+    }
 
-  if (currentCatagory === "accessibility") {
-    loadQuiz(accessibilityQuiz);
-  }
+    if (currentCatagory === "accessibility") {
+      loadQuiz(accessibilityQuiz);
+    }
+  }else{
+    return
+  };
+
+
 });
 
 // add event listener to all options btn
@@ -90,6 +101,9 @@ function loadQuiz(quizData) {
     ansBtn.addEventListener("click", function () {
       // check answer
       checkAnswer(ans, quizData[currentQuestionIndex].correctAnswer, ansBtn);
+
+      // set selected naswer to true
+      selectedAnswr = true;
     });
   });
 }
