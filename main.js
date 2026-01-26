@@ -1,5 +1,8 @@
-// dom elem
+// import data from quizdata
+import {htmlQuiz} from './quizData.js'
 
+
+// dom elem
 const optionBtns = document.querySelectorAll('.option');
 const headerElem = document.querySelector('.quiz-title')
 
@@ -10,10 +13,16 @@ optionBtns.forEach((btn) => {
         // change title
         headerElem.innerHTML = btn.innerHTML;
 
-        // this is for quiz question
-        // if(btn.id === 'html'){
-        //     // change innertext of header
-        //     headerElem.innerHTML = btn.innerHTML;
-        // }
+        //load quiz
+        if(btn.id === 'html'){
+            loadQuiz();
+        }
     })
 })
+
+
+
+
+function loadQuiz(){
+    //get diff quiz array and then populate dom
+}

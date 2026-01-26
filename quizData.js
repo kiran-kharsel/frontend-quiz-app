@@ -1,5 +1,5 @@
 // html quiz
-const htmlQuiz = [
+export const htmlQuiz = [
   {
     id: 1,
     question: "What does HTML stand for?",
