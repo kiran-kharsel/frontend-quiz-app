@@ -16,7 +16,8 @@ const nextBtn = rightSection.querySelector(".next");
 let currentQuestionIndex = 0;
 
 // current catagory
-let currentCatagory = "";
+let selectedCatagory = [];
+let currentCatagory = '';
 
 // check for selection
 let selectedAnswr = false;
@@ -30,6 +31,15 @@ nextBtn.addEventListener("click", function () {
   if (selectedAnswr) {
     currentQuestionIndex++;
     selectedAnswr = false;
+
+    console.log(currentQuestionIndex)
+
+    // check for last question
+    if(currentQuestionIndex === selectedCatagory.length){
+        // show score
+        optionSection.innerHTML = 'score is 10'
+        return;
+    }
 
     if (currentCatagory === "html") {
       loadQuiz(htmlQuiz);
@@ -47,7 +57,7 @@ nextBtn.addEventListener("click", function () {
       loadQuiz(accessibilityQuiz);
     }
   }else{
-    return
+    return;
   };
 
 
@@ -67,7 +77,7 @@ optionBtns.forEach((btn) => {
 
     //load quiz
     if (btn.id === "html") {
-      loadQuiz(htmlQuiz);
+        loadQuiz(htmlQuiz);
     }
 
     if (btn.id === "css") {
@@ -81,10 +91,15 @@ optionBtns.forEach((btn) => {
     if (btn.id === "accessibility") {
       loadQuiz(accessibilityQuiz);
     }
+
+
   });
 });
 
+
+
 function loadQuiz(quizData) {
+    selectedCatagory = [...quizData]
   // show question and desc
   questionElem.innerHTML = quizData[currentQuestionIndex].question;
   descElem.innerHTML = `Question ${currentQuestionIndex + 1} out of ${quizData.length}`;
@@ -114,16 +129,13 @@ function checkAnswer(answer, correctAns, elem) {
   if (answer === correctAns) {
     score++;
     // show success indicator
-    console.log("right ans");
     elem.classList.add("correct");
   } else {
     // show fail indicator and cursor not allowd
-    console.log("wrong ans");
     elem.classList.add("incorrect");
 
     // cursor not allowed for multi selection
     optionSection.querySelectorAll(".ansbtn").forEach((btn) => {
-      console.log(btn);
       btn.style.cursor = "not-allowed";
     });
   }
