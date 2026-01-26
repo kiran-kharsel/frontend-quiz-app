@@ -74,7 +74,7 @@ body{
 .main-section .right-section{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
 .right-section button{
@@ -88,27 +88,38 @@ body{
     border-radius: 5px;
     color: var(--text-color);
     background-color: var(--light-bg);
+    cursor: pointer;
+    border: 1px solid var(--light-bg);
+    transition: 0.5s;
+}
+
+.right-section button:hover{
+    border: 1px solid var(--text-color);
 }
 
 .right-section button i{
     font-size: 1.5rem;
 }
 
-/* .right-section button:first-child i{
-    color: var(--accent-color);
-} */
-
+.right-section .option-section{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
 
 .right-section .ansbtn{
     font-weight: 500;
     font-size: 1rem;
     letter-spacing: 1px;
-    cursor: pointer;
-    border: 1px solid var(--light-bg);
-    transition: 0.5s;
 }
 
-.right-section .ansbtn:hover{
-    border: 1px solid var(--text-color);
+.right-section .submit{
+    justify-content: center;
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    letter-spacing: 0.5px;
 }
