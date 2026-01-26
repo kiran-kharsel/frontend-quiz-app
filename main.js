@@ -10,6 +10,8 @@ const questionElem = document.querySelector('.heading')
 const descElem = document.querySelector('.desc')
 
 const rightSection = document.querySelector('.right-section')
+const optionSection = rightSection.querySelector('.option-section')
+const submitBtn = rightSection.querySelector('.submit')
 
 
 // current question
@@ -24,9 +26,12 @@ let score = 0;
 // add event listener to all options btn
 optionBtns.forEach((btn) => {
     btn.addEventListener('click', function(){
-        // console.log(btn.id)
         // change title
         headerElem.innerHTML = btn.innerHTML;
+
+        //show submit button
+        submitBtn.classList.add('active')
+        console.log(submitBtn)
 
         //load quiz
         if(btn.id === 'html'){
@@ -56,13 +61,13 @@ function loadQuiz(quizData){
     descElem.innerHTML = `Question ${currentQuestionIndex + 1} out of ${quizData.length}`;
 
     // clear previoous elements
-    rightSection.innerHTML = ``;
+    optionSection.innerHTML = ``;
 
     quizData[currentQuestionIndex].answers.forEach((ans) => {
         let ansBtn = document.createElement('button')
         ansBtn.classList.add('ansbtn');
         ansBtn.innerText = ans;
-        rightSection.appendChild(ansBtn);
+        optionSection.appendChild(ansBtn);
 
         ansBtn.addEventListener('click', function(){
             // check answer

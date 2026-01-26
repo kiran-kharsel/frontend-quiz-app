@@ -115,6 +115,7 @@ body{
 }
 
 .right-section .submit{
+    display: none;
     justify-content: center;
     text-transform: capitalize;
     font-size: 1rem;
@@ -124,6 +125,6 @@ body{
     letter-spacing: 0.5px;
 }
 
-.right-section .submit.hidden{
-    display: none;
+.right-section .submit.active{
+    display: flex;
 }
