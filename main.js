@@ -77,22 +77,7 @@ categoryBtns.forEach((btn) => {
 nextBtn.addEventListener("click", function () {
   // check for play again button
   if (nextBtn.innerText === "Play Again") {
-    // hide right section, hide all section 
-    quizCompleteMsg.classList.add('hidden')
-    leftSectionHeading.classList.remove('hidden')
-
-    rightSectionCategory.classList.remove('hidden')
-    scoreSection.classList.add('hidden')
-    nextBtn.innerText = 'Next';
-    nextBtn.classList.add('hidden')
-    headerElem.innerHTML = '';
-
-    // reset values
-    currentQuestionIndex = 0;
-    selectedCatagory = [];
-    currentCatagory = "";
-    selectedAnswr = false;
-    score = 0;
+    restartQuiz();
   }
 
 
@@ -145,6 +130,26 @@ nextBtn.addEventListener("click", function () {
 });
 
 
+
+// restart quiz
+function restartQuiz(){
+  // hide right section, hide all section 
+    quizCompleteMsg.classList.add('hidden')
+    leftSectionHeading.classList.remove('hidden')
+
+    rightSectionCategory.classList.remove('hidden')
+    scoreSection.classList.add('hidden')
+    nextBtn.innerText = 'Next';
+    nextBtn.classList.add('hidden')
+    headerElem.innerHTML = '';
+
+    // reset values
+    currentQuestionIndex = 0;
+    selectedCatagory = [];
+    currentCatagory = "";
+    selectedAnswr = false;
+    score = 0;
+}
 
 function loadQuiz(quizData) {
   selectedCatagory = [...quizData];
