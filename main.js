@@ -9,19 +9,22 @@ const leftSectionQuestion = document.querySelector(".left-section-question");
 const questionElem = leftSectionQuestion.querySelector(".question");
 const questionNumElem = leftSectionQuestion.querySelector(".question-num");
 const quizCompleteMsg = document.querySelector(".quiz-complete-msg");
+const progressBarElem = document.querySelector('.progress-bar')
 
 const rightSection = document.querySelector(".right-section");
-const rightSectionCategory = rightSection.querySelector(
-  ".right-section-category",
-);
-const rightSectionAnswers = rightSection.querySelector(
-  ".right-section-answers",
-);
+const rightSectionCategory = rightSection.querySelector(".right-section-category");
+const rightSectionAnswers = rightSection.querySelector(".right-section-answers");
 const categoryBtns = document.querySelectorAll(".option");
 const scoreSection = document.querySelector(".score-section");
 const nextBtn = rightSection.querySelector(".next");
 
-const optionSection = rightSection.querySelector(".option-section");
+
+
+
+
+
+
+
 
 // current question
 let currentQuestionIndex = 0;
@@ -35,6 +38,12 @@ let selectedAnswr = false;
 
 // score
 let score = 0;
+
+// progress bar
+let progressBarWidth = 0;
+
+
+
 
 // add event listener to all categoty btn
 categoryBtns.forEach((btn) => {
@@ -73,6 +82,7 @@ nextBtn.addEventListener("click", function () {
   if (nextBtn.innerText === "Play Again") {
     restartQuiz();
   }
+  
 
   // check if user select any option
   if (selectedAnswr) {
@@ -142,6 +152,14 @@ function restartQuiz() {
 
 function loadQuiz(quizData) {
   selectedCatagory = [...quizData];
+
+  // update progress bar
+  let widthPercentage = (100 / selectedCatagory.length)
+  console.log(widthPercentage)
+  console.log(progressBarWidth)
+  progressBarWidth = progressBarWidth + widthPercentage;
+  console.log(progressBarWidth)
+  progressBarElem.style.width = `${progressBarWidth}%`
 
   // show question section
   leftSectionHeading.classList.add("hidden");

@@ -108,7 +108,7 @@ i {
 .progress-bar-border .progress-bar{
     height: 100%;
     border-radius: 15px;
-    width: 30%;
+    width: 0;
     background-color: var(--accent-color);
 }
 
