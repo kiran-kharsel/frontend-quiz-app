@@ -2,8 +2,12 @@
 import { htmlQuiz, cssQuiz, jsQuiz, accessibilityQuiz } from "./quizData.js";
 
 // dom elem
-const optionBtns = document.querySelectorAll(".option");
 const headerElem = document.querySelector(".quiz-title");
+
+const leftSectionHeading = document.querySelector('.left-section-heading')
+const leftSectionQuestion = document.querySelector('.left-section-question')
+
+const optionBtns = document.querySelectorAll(".option");
 
 const questionElem = document.querySelector(".heading");
 const descElem = document.querySelector(".desc");
@@ -32,7 +36,7 @@ nextBtn.addEventListener("click", function () {
     console.log("reset quiz");
   }
 
-  
+
   // check if user select any option
   if (selectedAnswr) {
     currentQuestionIndex++;
