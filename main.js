@@ -27,11 +27,12 @@ let score = 0;
 
 // next question load
 nextBtn.addEventListener("click", function () {
-    // check for play again button
-    if(nextBtn.innerText === 'Play Again'){
-        console.log('reset quiz')
-    }
-    console.log(nextBtn.innerText)
+  // check for play again button
+  if (nextBtn.innerText === "Play Again") {
+    console.log("reset quiz");
+  }
+
+  
   // check if user select any option
   if (selectedAnswr) {
     currentQuestionIndex++;
@@ -50,12 +51,12 @@ nextBtn.addEventListener("click", function () {
         </div>
         `;
 
-        // rename next button
-        nextBtn.innerText = 'Play again';
+      // rename next button
+      nextBtn.innerText = "Play again";
 
-        // change heding text
-        questionElem.innerHTML = `Quiz completed <b>You scored...</b>`;
-        descElem.innerHTML = '';
+      // change heding text
+      questionElem.innerHTML = `Quiz completed <b>You scored...</b>`;
+      descElem.innerHTML = "";
 
       return;
     }
