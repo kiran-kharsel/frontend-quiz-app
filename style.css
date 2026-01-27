@@ -96,15 +96,21 @@ i {
     width: 80%;
 }
 
-.left-section-question .progress-bar{
+.left-section-question .progress-bar-border{
     position: absolute;
-    bottom: 120px;
+    bottom: 180px;
     height: 15px;
     border-radius: 15px;
     width: 100%;
     background-color: var(--light-bg);
 }
 
+.progress-bar-border .progress-bar{
+    height: 100%;
+    border-radius: 15px;
+    width: 30%;
+    background-color: var(--accent-color);
+}
 
 /* right-section */
 
