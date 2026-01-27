@@ -148,6 +148,7 @@ function restartQuiz() {
   currentCatagory = "";
   selectedAnswr = false;
   score = 0;
+  progressBarWidth = 0;
 }
 
 function loadQuiz(quizData) {
@@ -155,10 +156,7 @@ function loadQuiz(quizData) {
 
   // update progress bar
   let widthPercentage = (100 / selectedCatagory.length)
-  console.log(widthPercentage)
-  console.log(progressBarWidth)
   progressBarWidth = progressBarWidth + widthPercentage;
-  console.log(progressBarWidth)
   progressBarElem.style.width = `${progressBarWidth}%`
 
   // show question section
