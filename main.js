@@ -167,7 +167,7 @@ function loadQuiz(quizData) {
 function checkAnswer(answer, correctAns, elem) {
   // check if selected ans is correct
   if (answer === correctAns) {
-    score++;
+    //score++;
     // show success indicator
     elem.classList.add("correct");
   } else {
@@ -175,7 +175,7 @@ function checkAnswer(answer, correctAns, elem) {
     elem.classList.add("incorrect");
 
     // cursor not allowed for multi selection
-    optionSection.querySelectorAll(".ansbtn").forEach((btn) => {
+    rightSectionAnswers.querySelectorAll(".answerBtn").forEach((btn) => {
       btn.style.cursor = "not-allowed";
     });
   }
