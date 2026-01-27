@@ -8,96 +8,46 @@ const headerElem = document.querySelector(".quiz-title");
 
 const leftSectionHeading = document.querySelector('.left-section-heading')
 const leftSectionQuestion = document.querySelector('.left-section-question')
-
-const optionBtns = document.querySelectorAll(".option");
-
-const questionElem = document.querySelector(".heading");
-const descElem = document.querySelector(".desc");
+const questionElem = leftSectionQuestion.querySelector(".question");
+const questionNumElem = leftSectionQuestion.querySelector(".question-num");
 
 const rightSection = document.querySelector(".right-section");
-const optionSection = rightSection.querySelector(".option-section");
+const rightSectionCategory = rightSection.querySelector('.right-section-category')
+const rightSectionAnswers = rightSection.querySelector('.right-section-answers')
+const categoryBtns = document.querySelectorAll(".option");
 const nextBtn = rightSection.querySelector(".next");
+
+
+
+const optionSection = rightSection.querySelector(".option-section");
+
+
+
 
 // current question
 let currentQuestionIndex = 0;
 
-// current catagory
-let selectedCatagory = [];
-let currentCatagory = "";
+// // current catagory
+// let selectedCatagory = [];
+// let currentCatagory = "";
 
-// check for selection
-let selectedAnswr = false;
+// // check for selection
+// let selectedAnswr = false;
 
-// score
-let score = 0;
+// // score
+// let score = 0;
 
-// next question load
-nextBtn.addEventListener("click", function () {
-  // check for play again button
-  if (nextBtn.innerText === "Play Again") {
-    console.log("reset quiz");
-  }
-
-
-  // check if user select any option
-  if (selectedAnswr) {
-    currentQuestionIndex++;
-    selectedAnswr = false;
-
-    console.log(currentQuestionIndex);
-
-    // check for last question
-    if (currentQuestionIndex === selectedCatagory.length) {
-      // show score
-      optionSection.innerHTML = `   
-        <div class="scoreElem">
-            <div class="heading">${headerElem.innerHTML}</div>
-            <h1 class="score">${score}</h1>
-            <p>out of ${selectedCatagory.length}</p>
-        </div>
-        `;
-
-      // rename next button
-      nextBtn.innerText = "Play again";
-
-      // change heding text
-      questionElem.innerHTML = `Quiz completed <b>You scored...</b>`;
-      descElem.innerHTML = "";
-
-      return;
-    }
-
-    if (currentCatagory === "html") {
-      loadQuiz(htmlQuiz);
-    }
-
-    if (currentCatagory === "css") {
-      loadQuiz(cssQuiz);
-    }
-
-    if (currentCatagory === "javascript") {
-      loadQuiz(jsQuiz);
-    }
-
-    if (currentCatagory === "accessibility") {
-      loadQuiz(accessibilityQuiz);
-    }
-  } else {
-    return;
-  }
-});
-
-// add event listener to all options btn
-optionBtns.forEach((btn) => {
+// add event listener to all categoty btn
+categoryBtns.forEach((btn) => {
   btn.addEventListener("click", function () {
     // change title
     headerElem.innerHTML = btn.innerHTML;
 
     //show next button
-    nextBtn.classList.add("active");
+    //nextBtn.classList.add("active");
 
     //set ctagory
-    currentCatagory = btn.id;
+    //currentCatagory = btn.id;
 
     //load quiz
     if (btn.id === "html") {
@@ -115,32 +65,98 @@ optionBtns.forEach((btn) => {
     if (btn.id === "accessibility") {
       loadQuiz(accessibilityQuiz);
     }
+
   });
 });
 
+
+
+// // next question load
+// nextBtn.addEventListener("click", function () {
+//   // check for play again button
+//   if (nextBtn.innerText === "Play Again") {
+//     console.log("reset quiz");
+//   }
+
+
+//   // check if user select any option
+//   if (selectedAnswr) {
+//     currentQuestionIndex++;
+//     selectedAnswr = false;
+
+//     console.log(currentQuestionIndex);
+
+//     // check for last question
+//     if (currentQuestionIndex === selectedCatagory.length) {
+//       // show score
+//       optionSection.innerHTML = `   
+//         <div class="scoreElem">
+//             <div class="heading">${headerElem.innerHTML}</div>
+//             <h1 class="score">${score}</h1>
+//             <p>out of ${selectedCatagory.length}</p>
+//         </div>
+//         `;
+
+//       // rename next button
+//       nextBtn.innerText = "Play again";
+
+//       // change heding text
+//       questionElem.innerHTML = `Quiz completed <b>You scored...</b>`;
+//       descElem.innerHTML = "";
+
+//       return;
+//     }
+
+//     if (currentCatagory === "html") {
+//       loadQuiz(htmlQuiz);
+//     }
+
+//     if (currentCatagory === "css") {
+//       loadQuiz(cssQuiz);
+//     }
+
+//     if (currentCatagory === "javascript") {
+//       loadQuiz(jsQuiz);
+//     }
+
+//     if (currentCatagory === "accessibility") {
+//       loadQuiz(accessibilityQuiz);
+//     }
+//   } else {
+//     return;
+//   }
+// });
+
+
+
 function loadQuiz(quizData) {
-  selectedCatagory = [...quizData];
+  //selectedCatagory = [...quizData];
+
+  // show question section
+  leftSectionHeading.classList.add('hidden');
+  leftSectionQuestion.classList.remove('hidden')
+
   // show question and desc
   questionElem.innerHTML = quizData[currentQuestionIndex].question;
-  descElem.innerHTML = `Question ${currentQuestionIndex + 1} out of ${quizData.length}`;
+  questionNumElem.innerHTML = `Question ${currentQuestionIndex + 1} out of ${quizData.length}`;
 
   // clear previoous elements
-  optionSection.innerHTML = ``;
+  //optionSection.innerHTML = ``;
 
-  quizData[currentQuestionIndex].answers.forEach((ans) => {
-    let ansBtn = document.createElement("button");
-    ansBtn.classList.add("ansbtn");
-    ansBtn.innerText = ans;
-    optionSection.appendChild(ansBtn);
+  // quizData[currentQuestionIndex].answers.forEach((ans) => {
+  //   let ansBtn = document.createElement("button");
+  //   ansBtn.classList.add("ansbtn");
+  //   ansBtn.innerText = ans;
+  //   optionSection.appendChild(ansBtn);
 
-    ansBtn.addEventListener("click", function () {
-      // check answer
-      checkAnswer(ans, quizData[currentQuestionIndex].correctAnswer, ansBtn);
+  //   ansBtn.addEventListener("click", function () {
+  //     // check answer
+  //     checkAnswer(ans, quizData[currentQuestionIndex].correctAnswer, ansBtn);
 
-      // set selected naswer to true
-      selectedAnswr = true;
-    });
-  });
+  //     // set selected naswer to true
+  //     selectedAnswr = true;
+  //   });
+  // });
 }
 
 // check answer
