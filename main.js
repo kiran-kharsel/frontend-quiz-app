@@ -1,3 +1,5 @@
+/*
+
 // import data from quizdata
 import { htmlQuiz, cssQuiz, jsQuiz, accessibilityQuiz } from "./quizData.js";
 
@@ -158,3 +160,5 @@ function checkAnswer(answer, correctAns, elem) {
     });
   }
 }
+
+*/

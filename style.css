@@ -23,7 +23,7 @@ body{
 }
 
 .hidden{
-    display: none;
+    display: none !important;
 }
 
 
@@ -112,7 +112,7 @@ body{
 }
 
 
-
+/* right-section */
 
 
 .main-section .right-section{
@@ -122,6 +122,7 @@ body{
 }
 
 .right-section button{
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -145,13 +146,23 @@ body{
     font-size: 1.5rem;
 }
 
-.right-section .option-section{
+.right-section-category{
     height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
+
+.right-section-answers{
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/* 
 .option-section .scoreElem{
     height: 100%;
     width: 100%;
@@ -177,35 +188,35 @@ body{
 
 .scoreElem .score{
     font-size: 3.5rem;
-}
+} */
 
 
-.right-section .ansbtn{
+.right-section .answerBtn{
     font-weight: 500;
     font-size: 1rem;
     letter-spacing: 1px;
 }
 
-.ansbtn.correct{
+.answerBtn.correct{
     border: 1px solid lightgreen;
     color: lightgreen;
 }
-.ansbtn.correct:hover{
+.answerBtn.correct:hover{
     border-color:lightgreen;
 }
 
 
-.ansbtn.incorrect{
+.answerBtn.incorrect{
     border: 1px solid crimson;
     color: crimson;
 }
-.ansbtn.incorrect:hover{
+.answerBtn.incorrect:hover{
     border-color:crimson;
 }
 
 
 .right-section .next{
-    display: none;
+    display: flex;
     justify-content: center;
     text-transform: capitalize;
     font-size: 1rem;
@@ -215,6 +226,3 @@ body{
     letter-spacing: 0.5px;
 }
 
-.right-section .next.active{
-    display: flex;
-}
