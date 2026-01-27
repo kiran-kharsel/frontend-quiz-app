@@ -10,11 +10,13 @@ const leftSectionHeading = document.querySelector('.left-section-heading')
 const leftSectionQuestion = document.querySelector('.left-section-question')
 const questionElem = leftSectionQuestion.querySelector(".question");
 const questionNumElem = leftSectionQuestion.querySelector(".question-num");
+const quizCompleteMsg = document.querySelector('.quiz-complete-msg')
 
 const rightSection = document.querySelector(".right-section");
 const rightSectionCategory = rightSection.querySelector('.right-section-category')
 const rightSectionAnswers = rightSection.querySelector('.right-section-answers')
 const categoryBtns = document.querySelectorAll(".option");
+const scoreSection = document.querySelector('.score-section')
 const nextBtn = rightSection.querySelector(".next");
 
 
@@ -27,15 +29,15 @@ const optionSection = rightSection.querySelector(".option-section");
 // current question
 let currentQuestionIndex = 0;
 
-// // current catagory
-// let selectedCatagory = [];
-// let currentCatagory = "";
+// current catagory
+let selectedCatagory = [];
+let currentCatagory = "";
 
-// // check for selection
-// let selectedAnswr = false;
+// check for selection
+let selectedAnswr = false;
 
-// // score
-// let score = 0;
+// score
+let score = 0;
 
 // add event listener to all categoty btn
 categoryBtns.forEach((btn) => {
@@ -47,7 +49,7 @@ categoryBtns.forEach((btn) => {
     nextBtn.classList.remove('hidden');
 
     //set ctagory
-    //currentCatagory = btn.id;
+    currentCatagory = btn.id;
 
     //load quiz
     if (btn.id === "html") {
@@ -71,66 +73,67 @@ categoryBtns.forEach((btn) => {
 
 
 
-// // next question load
-// nextBtn.addEventListener("click", function () {
-//   // check for play again button
-//   if (nextBtn.innerText === "Play Again") {
-//     console.log("reset quiz");
-//   }
+// next question load
+nextBtn.addEventListener("click", function () {
+  // check for play again button
+  if (nextBtn.innerText === "Play Again") {
+    console.log("reset quiz");
+    // hide right section
+  }
 
 
-//   // check if user select any option
-//   if (selectedAnswr) {
-//     currentQuestionIndex++;
-//     selectedAnswr = false;
+  // check if user select any option
+  if (selectedAnswr) {
+    currentQuestionIndex++;
+    selectedAnswr = false;
 
-//     console.log(currentQuestionIndex);
 
-//     // check for last question
-//     if (currentQuestionIndex === selectedCatagory.length) {
-//       // show score
-//       optionSection.innerHTML = `   
-//         <div class="scoreElem">
-//             <div class="heading">${headerElem.innerHTML}</div>
-//             <h1 class="score">${score}</h1>
-//             <p>out of ${selectedCatagory.length}</p>
-//         </div>
-//         `;
+    // check for last question
+    if (currentQuestionIndex === selectedCatagory.length) {
+      // show score, hide answer elems, create score elem and show them
+      scoreSection.classList.remove('hidden')
+      scoreSection.innerHTML = `
+        <div>${headerElem.innerHTML}</div>
+        <h1 class="score">${score}</h1>
+        <p>out of ${selectedCatagory.length}</p>
+      `;
+      rightSectionAnswers.classList.add('hidden')
 
-//       // rename next button
-//       nextBtn.innerText = "Play again";
+      // rename next button
+      nextBtn.innerText = "Play again";
 
-//       // change heding text
-//       questionElem.innerHTML = `Quiz completed <b>You scored...</b>`;
-//       descElem.innerHTML = "";
+      // show complete message and hide question section
+      quizCompleteMsg.classList.remove('hidden')
+      leftSectionQuestion.classList.add('hidden')
 
-//       return;
-//     }
 
-//     if (currentCatagory === "html") {
-//       loadQuiz(htmlQuiz);
-//     }
+      return;
+    }
 
-//     if (currentCatagory === "css") {
-//       loadQuiz(cssQuiz);
-//     }
+    if (currentCatagory === "html") {
+      loadQuiz(htmlQuiz);
+    }
 
-//     if (currentCatagory === "javascript") {
-//       loadQuiz(jsQuiz);
-//     }
+    if (currentCatagory === "css") {
+      loadQuiz(cssQuiz);
+    }
 
-//     if (currentCatagory === "accessibility") {
-//       loadQuiz(accessibilityQuiz);
-//     }
-//   } else {
-//     return;
-//   }
-// });
+    if (currentCatagory === "javascript") {
+      loadQuiz(jsQuiz);
+    }
+
+    if (currentCatagory === "accessibility") {
+      loadQuiz(accessibilityQuiz);
+    }
+  } else {
+    return;
+  }
+});
 
 
 
 function loadQuiz(quizData) {
-  //selectedCatagory = [...quizData];
+  selectedCatagory = [...quizData];
 
   // show question section
   leftSectionHeading.classList.add('hidden');
@@ -158,7 +161,7 @@ function loadQuiz(quizData) {
       checkAnswer(ans, quizData[currentQuestionIndex].correctAnswer, ansBtn);
 
       // set selected naswer to true
-      //selectedAnswr = true;
+      selectedAnswr = true;
     });
   });
 }
@@ -167,7 +170,7 @@ function loadQuiz(quizData) {
 function checkAnswer(answer, correctAns, elem) {
   // check if selected ans is correct
   if (answer === correctAns) {
-    //score++;
+    score++;
     // show success indicator
     elem.classList.add("correct");
   } else {
