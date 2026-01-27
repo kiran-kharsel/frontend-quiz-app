@@ -57,8 +57,6 @@ nextBtn.addEventListener("click", function () {
         questionElem.innerHTML = `Quiz completed <b>You scored...</b>`;
         descElem.innerHTML = '';
 
-        console.log('reset')
-
       return;
     }
 
