@@ -60,12 +60,9 @@ body{
 
 .main-section .left-section{
     color: var(--text-color);
-    background-color: white;
 }
 
-.left-section .left-section-heading{
-    background-color: red;
-}
+
 
 
 .left-section-heading h1{
