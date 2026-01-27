@@ -44,7 +44,7 @@ categoryBtns.forEach((btn) => {
     headerElem.innerHTML = btn.innerHTML;
 
     //show next button
-    //nextBtn.classList.add("active");
+    nextBtn.classList.remove('hidden');
 
     //set ctagory
     //currentCatagory = btn.id;
