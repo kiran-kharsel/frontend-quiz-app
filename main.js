@@ -136,27 +136,31 @@ function loadQuiz(quizData) {
   leftSectionHeading.classList.add('hidden');
   leftSectionQuestion.classList.remove('hidden')
 
+  // hide category button and show answers btns
+  rightSectionCategory.classList.add('hidden')
+  rightSectionAnswers.classList.remove('hidden')
+
   // show question and desc
   questionElem.innerHTML = quizData[currentQuestionIndex].question;
   questionNumElem.innerHTML = `Question ${currentQuestionIndex + 1} out of ${quizData.length}`;
 
   // clear previoous elements
-  //optionSection.innerHTML = ``;
+  rightSectionAnswers.innerHTML = ``;
 
-  // quizData[currentQuestionIndex].answers.forEach((ans) => {
-  //   let ansBtn = document.createElement("button");
-  //   ansBtn.classList.add("ansbtn");
-  //   ansBtn.innerText = ans;
-  //   optionSection.appendChild(ansBtn);
+  quizData[currentQuestionIndex].answers.forEach((ans) => {
+    let ansBtn = document.createElement("button");
+    ansBtn.classList.add("answerBtn");
+    ansBtn.innerText = ans;
+    rightSectionAnswers.appendChild(ansBtn);
 
-  //   ansBtn.addEventListener("click", function () {
-  //     // check answer
-  //     checkAnswer(ans, quizData[currentQuestionIndex].correctAnswer, ansBtn);
+    ansBtn.addEventListener("click", function () {
+      // check answer
+      checkAnswer(ans, quizData[currentQuestionIndex].correctAnswer, ansBtn);
 
-  //     // set selected naswer to true
-  //     selectedAnswr = true;
-  //   });
-  // });
+      // set selected naswer to true
+      //selectedAnswr = true;
+    });
+  });
 }
 
 // check answer
