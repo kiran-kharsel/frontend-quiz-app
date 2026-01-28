@@ -15,4 +15,16 @@ A lightweight, interactive quiz application built using HTML, CSS, and Vanilla J
 - JavaScript (ES6+) for quiz logic and interactivity
 
 ## 📸 Preview
-![]()
+### desktop view - main page
+![desktop view 01](./assets/pc01.png)
+
+
+### desktop view - load quiz
+![desktop view 02](./assets/pc02.png)
+
+
+### desktop view - show score
+![desktop view 03](./assets/pc03.png)
+
+### mobile view
+![mobile view](./assets/mobile-view.jpg)
